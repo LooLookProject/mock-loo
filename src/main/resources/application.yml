@@ -1,0 +1,12 @@
+api:
+  base:
+    url: "http://localhost:8080/api"
+
+loo:
+  ids:
+    - 1
+    - 2
+
+people:
+  count: 10
+  use_toilet_seconds: 5
