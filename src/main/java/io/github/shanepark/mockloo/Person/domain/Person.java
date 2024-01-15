@@ -40,7 +40,8 @@ public class Person {
         try {
             log.info("[Loo-{}] Lock by Person-{}", loo.getId(), index);
             loo.lock();
-            Thread.sleep(peopleConfig.useToiletSeconds() * 1000L);
+            long toiletUseFor = (long) (peopleConfig.useToiletSeconds() * random.nextDouble(0.5, 1.5) * 1000.0);
+            Thread.sleep(toiletUseFor);
             flushPoo();
             flushPee();
         } catch (InterruptedException e) {

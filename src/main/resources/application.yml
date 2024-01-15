@@ -15,6 +15,6 @@ people:
   count: 30
   use_toilet_seconds: 5
 
-logging:
-  level:
-    io.github.shanepark.mockloo.loolock.controller: DEBUG
+#logging:
+#  level:
+#    io.github.shanepark.mockloo.loolock.controller: DEBUG
