@@ -1,11 +1,10 @@
 package io.github.shanepark.mockloo.loo.domain;
 
-import io.github.shanepark.mockloo.util.RequestApi;
+import io.github.shanepark.mockloo.LooTracker;
+import io.github.shanepark.mockloo.config.RequestApi;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Getter
 public class Loo {
     private final String id;
@@ -13,15 +12,26 @@ public class Loo {
 
     @Getter(AccessLevel.NONE)
     private final RequestApi requestApi;
+    @Getter(AccessLevel.NONE)
+    private final LooTracker looTracker;
+
+    public Loo(String id, RequestApi requestApi, LooTracker looTracker) {
+        this.id = id;
+        this.requestApi = requestApi;
+        this.looTracker = looTracker;
+        looTracker.addLoo(this);
+    }
 
     public void lock() {
-        requestApi.sendLockRequest(id);
         this.isLocked = true;
+        looTracker.update();
+        requestApi.sendLockRequest(id);
     }
 
     public void unlock() {
-        requestApi.sendUnlockRequest(id);
         this.isLocked = false;
+        looTracker.update();
+        requestApi.sendUnlockRequest(id);
     }
 
 }

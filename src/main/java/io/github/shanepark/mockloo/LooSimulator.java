@@ -2,9 +2,9 @@ package io.github.shanepark.mockloo;
 
 import io.github.shanepark.mockloo.Person.config.PeopleConfig;
 import io.github.shanepark.mockloo.Person.domain.Person;
+import io.github.shanepark.mockloo.config.RequestApi;
 import io.github.shanepark.mockloo.loo.config.LooConfig;
 import io.github.shanepark.mockloo.loo.domain.Loo;
-import io.github.shanepark.mockloo.util.RequestApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,6 +21,7 @@ public class LooSimulator {
     private final PeopleConfig peopleConfig;
     private final LooConfig looConfig;
     private final RequestApi requestApi;
+    private final LooTracker looTracker;
 
     protected void simulate() {
         initLoo();
@@ -46,7 +47,7 @@ public class LooSimulator {
 
     private void initLoo() {
         looConfig.ids().forEach(id -> {
-            Loo loo = new Loo(id, requestApi);
+            Loo loo = new Loo(id, requestApi, looTracker);
             looQueue.offer(loo);
         });
     }

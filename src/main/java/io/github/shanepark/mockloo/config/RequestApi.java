@@ -1,4 +1,4 @@
-package io.github.shanepark.mockloo.util;
+package io.github.shanepark.mockloo.config;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.PostExchange;
