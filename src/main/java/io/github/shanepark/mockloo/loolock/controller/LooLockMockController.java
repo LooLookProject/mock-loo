@@ -13,12 +13,12 @@ public class LooLockMockController {
 
     @PostMapping("/lock/{id}")
     public void lock(@PathVariable String id) {
-//        log.info("[Request Received] Lock : {}", id);
+        log.debug("[Request Received] Lock : {}", id);
     }
 
     @PostMapping("/unlock/{id}")
     public void unlock(@PathVariable String id) {
-//        log.info("[Request Received] Unlock : {}", id);
+        log.debug("[Request Received] Unlock : {}", id);
     }
 
 }
