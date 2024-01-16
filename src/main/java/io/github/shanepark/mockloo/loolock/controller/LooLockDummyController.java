@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/")
 @Slf4j
-public class LooLockMockController {
+public class LooLockDummyController {
 
     @PostMapping("/lock/{id}")
     public void lock(@PathVariable String id) {
